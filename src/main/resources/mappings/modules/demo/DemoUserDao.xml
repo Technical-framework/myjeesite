@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkgem.jeesite.modules.demo.dao.DemoUserDao">
+	<sql id="demoUser">
+		id AS "id",
+		name AS "name",
+		age AS "age",
+		sex AS "sex",
+		phone AS "phone",
+		address AS "address"
+	</sql>
+	
+	<select id="get" resultType="DemoUser">
+		select 
+			<include refid="demoUser"/>
+		from demo_user
+		where id = #{id}
+	</select>
+	
+	<select id="findList" resultType="com.thinkgem.jeesite.modules.demo.entity.DemoUser">
+		select 
+			<include refid="demoUser"/>
+		from demo_user
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO demo_user(
+			name, 
+			age, 
+			sex, 
+			phone,
+			address
+		) VALUES (
+			#{name}, 
+			${age}, 
+			${sex}, 
+			#{phone},
+			#{address} 
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE demo_user SET 
+			name = #{name}, 
+			age = ${age}, 
+			sex = ${sex}, 
+			phone = #{phone}, 
+			address = #{address} 
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		delete from demo_user WHERE id = #{id}
+	</update>
+</mapper>
