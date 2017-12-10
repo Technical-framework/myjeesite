@@ -87,7 +87,7 @@ public class DemoUserController extends BaseController {
 	}
 	
 	/**
-	 * 删除
+	 * 删除操作
 	 * @param demoUser
 	 * @param redirectAttributes
 	 * @return
