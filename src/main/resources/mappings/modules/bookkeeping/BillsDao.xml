@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkgem.jeesite.modules.bookkeeping.dao.BillsDao">
+	<sql id="bills">
+		id AS "id",
+		money AS "money",
+		direction AS "direction",
+		category_id_1 AS "category_id_1",
+		category_id_2 AS "category_id_2",
+		remark AS "remark",
+		gmt_create AS "gmt_create",
+		create_user AS "create_user",
+		gmt_modify AS "gmt_modify",
+		modify_user AS "modify_user"
+	</sql>
+	
+	<select id="get" resultType="Bills">
+		select 
+			<include refid="bills"/>
+		from bk_bills
+		where id = #{id}
+	</select>
+	
+	<select id="findList" resultType="com.thinkgem.jeesite.modules.bookkeeping.entity.Bills">
+		select 
+			<include refid="bills"/>
+		from bk_bills
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO bk_bills(
+			money, 
+			direction, 
+			category_id_1, 
+			category_id_2,
+			remark, 
+			gmt_create, 
+			create_user, 
+			gmt_modify,
+			modify_user
+		) VALUES (
+			#{money}, 
+			#{direction}, 
+			#{category_id_1}, 
+			#{category_id_2},
+			#{remark},
+			#{gmt_create}, 
+			#{create_user}, 
+			#{gmt_modify},
+			#{modify_user}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE bk_bills SET 
+			money = #{money}, 
+			direction = #{direction}, 
+			category_id_1 = #{category_id_1}, 
+			category_id_2 = #{category_id_2},
+			remark = #{remark},
+			gmt_create = #{gmt_create}, 
+			create_user = #{create_user}, 
+			gmt_modify = #{gmt_modify},
+			modify_user = #{modify_user}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		delete from bk_bills WHERE id = #{id}
+	</update>
+</mapper>
