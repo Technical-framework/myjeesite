@@ -1,6 +1,5 @@
 package com.thinkgem.jeesite.modules.bookkeeping.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -82,8 +81,8 @@ public class BkCategoryController extends BaseController {
 		if (!beanValidator(model, bkCategory)){
 			return form(bkCategory, model);
 		}
-		bkCategory.setGmtCreate(new Date());
-		bkCategory.setCreateUser(Integer.valueOf(UserUtils.getUser().getId()));
+		/*bkCategory.setGmtCreate(new Date());
+		bkCategory.setCreateUser(Integer.valueOf(UserUtils.getUser().getId()));*/
 		bkCategoryService.save(bkCategory);
 		addMessage(redirectAttributes, "保存成功");
 		return "redirect:" + adminPath + "/bookkeeping/category/list";//保存成功，重定向调用list方法刷新列表

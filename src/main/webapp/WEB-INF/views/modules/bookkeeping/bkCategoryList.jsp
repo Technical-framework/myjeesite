@@ -16,7 +16,7 @@
 <body>
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="${ctx}/bookkeeping/category/list">列表</a></li>
-		<li><a href="${ctx}/bookkeeping/form?sort=10">新增</a></li>
+		<li><a href="${ctx}/bookkeeping/category/form?sort=10">新增</a></li>
 	</ul>
 	<form:form id="searchForm" modelAttribute="bkCategory" action="${ctx}/bookkeeping/category/list" method="post" class="breadcrumb form-search">
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
