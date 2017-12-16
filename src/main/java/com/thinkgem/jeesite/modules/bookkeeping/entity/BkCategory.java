@@ -17,6 +17,15 @@ public class BkCategory extends DataEntity<BkCategory>{
 	private Date gmtModify;
 	private Integer modifyUser;
 	
+	private String parentName;//父类型名称
+	private String createUserName;//创建人名称
+	
+	public String getCreateUserName() {
+		return createUserName;
+	}
+	public void setCreateUserName(String createUserName) {
+		this.createUserName = createUserName;
+	}
 	public String getName() {
 		return name;
 	}
@@ -58,6 +67,12 @@ public class BkCategory extends DataEntity<BkCategory>{
 	}
 	public void setModifyUser(Integer modifyUser) {
 		this.modifyUser = modifyUser;
+	}
+	public String getParentName() {
+		return parentName;
+	}
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
 	}
 	
 }

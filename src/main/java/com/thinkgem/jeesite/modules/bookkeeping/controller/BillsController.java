@@ -18,7 +18,7 @@ import com.thinkgem.jeesite.modules.bookkeeping.entity.Bills;
 import com.thinkgem.jeesite.modules.bookkeeping.service.BillsService;
 
 @Controller
-@RequestMapping(value = "${adminPath}/bookkeeping")
+@RequestMapping(value = "${adminPath}/bookkeeping/bills")
 public class BillsController extends BaseController {
 
 	@Autowired

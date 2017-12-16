@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.thinkgem.jeesite.modules.bookkeeping.entity.BkCategory">
+<mapper namespace="com.thinkgem.jeesite.modules.bookkeeping.dao.BkCategoryDao">
 	<sql id="bkCategory">
 		id AS "id",
 		name AS "name",
-		parent_id AS "parent_id",
+		parent_id AS "parentId",
 		type AS "type",
-		gmt_create AS "gmt_create",
-		create_user AS "create_user",
-		gmt_modify AS "gmt_modify",
-		modify_user AS "modify_user"
+		gmt_create AS "gmtCreate",
+		create_user AS "createUser",
+		gmt_modify AS "gmtModify",
+		modify_user AS "modifyUser"
 	</sql>
 	
 	<select id="get" resultType="BkCategory">
@@ -22,7 +22,28 @@
 	<select id="findList" resultType="com.thinkgem.jeesite.modules.bookkeeping.entity.BkCategory">
 		select 
 			<include refid="bkCategory"/>
+			,
+			(
+				SELECT
+					NAME
+				FROM
+					bk_category bk2
+				WHERE
+					bk2.id = parentId
+			) AS parentName
+			,
+			(
+				SELECT
+					login_name
+				FROM
+					sys_user u
+				WHERE
+					u.id = createUser
+			) AS createUserName
 		from bk_category
+		<if test="parentId != null">
+			where parent_id = ${parentId}
+		</if> 
 	</select>
 	
 	<insert id="insert">
